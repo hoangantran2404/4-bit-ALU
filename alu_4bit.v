@@ -14,7 +14,7 @@ function [4:0] add;
   input [3:0] a;// if you run System Verilog, you can replace by input [3:0] a,b;
   input [3:0] b;
     begin 
-        add = a + b;
+        add = a+b;
     end
 endfunction
 
@@ -22,7 +22,7 @@ function [4:0] sub;
     input [3:0] a;
     input [3:0] b;
     begin
-        sub = a - b;
+        sub = a-b;
     end
 endfunction
 
