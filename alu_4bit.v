@@ -27,10 +27,10 @@ function [4:0] sub;
 endfunction
 
   function [4:0] AND_op;// AND_operation
-    input [3:0] a;
+    input [3:0] a; //you can write input [3:0] a,b;
     input [3:0] b;
     begin
-        AND_op = a & b;
+        AND_op = a&b;
     end
 endfunction
 
@@ -38,7 +38,7 @@ function [4:0] OR_op;
     input [3:0] a;
     input [3:0] b;
     begin
-        OR_op = a | b;
+        OR_op = a|b;
     end
 endfunction
 
@@ -46,7 +46,7 @@ function [4:0] XOR_op;
     input [3:0] a;
     input [3:0] b;
     begin
-        XOR_op = a ^ b;
+        XOR_op = a^b;
     end
 endfunction
 
@@ -54,7 +54,7 @@ function [4:0] NAND_op;
     input [3:0] a;
     input [3:0] b;
     begin
-        NAND_op = ~(a & b);
+        NAND_op = ~(a&b);
     end
 endfunction
 
@@ -62,7 +62,7 @@ function [4:0] NOR_op;
     input [3:0] a;
     input [3:0] b;
     begin
-        NOR_op = ~(a | b);
+        NOR_op = ~(a|b);
     end
 endfunction
 
@@ -70,7 +70,7 @@ function [4:0] XNOR_op;
     input [3:0] a;
     input [3:0] b;
     begin
-        XNOR_op = ~(a ^ b);
+        XNOR_op = ~(a^b);
     end
 endfunction
 
@@ -79,10 +79,10 @@ always @(*) begin
     {Cout, ALU_Out} = 5'b00000;
 
     casez (ALU_Sel)
-        3'b00?: {Cout, ALU_Out} = (ALU_Sel[0]) ? sub(X, Y)     : add(X, Y);
-        3'b01?: {Cout, ALU_Out} = (ALU_Sel[0]) ? OR_op(X, Y)   : AND_op(X, Y);
-        3'b10?: {Cout, ALU_Out} = (ALU_Sel[0]) ? XOR_op(X, Y)  : NAND_op(X, Y);
-        3'b11?: {Cout, ALU_Out} = (ALU_Sel[0]) ? NOR_op(X, Y)  : XNOR_op(X, Y);
+        3'b00?: {Cout,ALU_Out} = (ALU_Sel[0]) ? sub(X,Y)     : add(X,Y);
+        3'b01?: {Cout,ALU_Out} = (ALU_Sel[0]) ? OR_op(X,Y)   : AND_op(X,Y);
+        3'b10?: {Cout,ALU_Out} = (ALU_Sel[0]) ? XOR_op(X,Y)  : NAND_op(X,Y);
+        3'b11?: {Cout,ALU_Out} = (ALU_Sel[0]) ? NOR_op(X,Y)  : XNOR_op(X,Y);
         default: begin
             ALU_Out = 4'b0000;
             Cout    = 1'b0;
